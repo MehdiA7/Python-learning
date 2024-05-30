@@ -1,4 +1,4 @@
-#Le jeux comporte 2 joueur l'utilisateur et l'ennemi
+#Le jeux comporte 2 joueurs l'utilisateur et l'ennemi
 #On commence tout les 2 avec 50 points de vie
 #L'utilisateur dispose de 3 potions pour récupérée de la vie
 #L'ennemi n'a aucune potion
