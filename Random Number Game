@@ -37,7 +37,7 @@ while retry:
             print("ENTER A NUMBER")
 #Loose
     if play_count == 0:
-        print("GAME OVER")
+        print(f"GAME OVER MYSTERY NUMBER IS {mystery_number}")
         retry = input("Restart ? y/n : ")
 #Restart Loose
         if retry == 'y':
