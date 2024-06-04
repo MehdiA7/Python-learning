@@ -1,6 +1,20 @@
+import json
+from pathlib import Path
+#Save and verification for save
+if not Path("list_save.json").is_file():
+    with open("list_save.json", 'w', encoding='utf-8') as f:
+        course_list = json.dump([], f)
+else:
+    with open("list_save.json", 'r', encoding='utf-8') as f:
+        course_list = json.load(f)
+
+def save():
+    with open("list_save.json", 'w', encoding='utf-8') as f:
+        json.dump(course_list, f)
+
+
 #Welcome
 print("Bienvenu dans votre liste de course personnel !\nChoisissez l'une des 5 options")
-course_list=None
 #Instruction
 while True:
     print("1. Ajouter\n2. Retirer \n3. Afficher\n4. Vider \n5. Quitter")
@@ -65,7 +79,8 @@ while True:
             else:
                 print("Votre liste est déjà vide")
             input("Taper n'importe ou pour continuer : ")
-#Stop
+#Stop and save
         case '5':
+            save()
             print("A bientôt !")
             break
