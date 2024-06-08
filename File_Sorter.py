@@ -3,13 +3,24 @@ from pathlib import Path
 dirs = {".png": "Images",
         ".jpg": "Images",
         ".jpeg": "Images",
+        ".webp": "Images",
+        ".ico": "Images",
+        ".jfif": "Images",
         ".rar": "Rar",
         ".zip": "Rar",
+        ".7z": "Rar",
         ".mp4": "Vidéo",
+        ".mov": "Vidéo",
         ".pdf": "Documents",
+        ".txt": "Documents",
+        ".docx": "Documents",
+        ".xlsx": "Documents",
+        ".dotx": "Documents",
         ".mp3": "Audio",
         ".wav": "Audio",
-        ".exe": "Executable"}
+        ".exe": "Executable",
+        ".msi": "Executable",
+        ".torrent": "Torrent"}
 
 
 tri_dir = Path.home() / 'Downloads'
