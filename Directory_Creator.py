@@ -14,9 +14,8 @@ DIRS_NAME = {"Films": ["Le seigneur des anneaux",
     "Exercices": ["les_variables",
                 "les_fichiers",
                 "les_boucles"]}
-
+path = Path.cwd()
 def dirs_creator_here():
-    path = Path.cwd()
 
     for key, value in DIRS_NAME.items():
         output_dir_key = path / key
@@ -26,6 +25,10 @@ def dirs_creator_here():
             output_dir_value.mkdir(exist_ok=True, parents=True)
 
 def dirs_delete():
+
+    for key in DIRS_NAME.keys():
+        delete = path / key
+        shutil.rmtree(delete)
 
 
 print("""Bienvenue dans le crateur de dossier de 
@@ -41,7 +44,13 @@ while True:
                 break
 
             case 'n':
-                print("Vous aviez décider de rien crée. Aurevoir")
-                break
+                delete = input("Voulez vous supprimer les dossiers ? y/n : ")
+                if delete == 'y':
+                    dirs_delete()
+                    print("Vos dossiers on bien été supprimer. Aurevoir.")
+                    break
+                else:
+                    print("Vous aviez décider de rien crée. Aurevoir")
+                    break
     else:
         print("Mauvaise saisie !")
