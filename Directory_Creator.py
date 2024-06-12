@@ -4,25 +4,24 @@
 from pathlib import Path
 import shutil
 
-DIRS_NAME = {"Films": ["Le seigneur des anneaux",
-                "Harry Potter",
-                "Moon",
-                "Forrest Gump"],
-    "Employes": ["Paul",
-                "Pierre",
-                "Marie"],
-    "Exercices": ["les_variables",
-                "les_fichiers",
-                "les_boucles"]}
+DIRS_NAME = {
+"Films": ["Le seigneur des anneaux",
+            "Harry Potter",
+            "Moon",
+            "Forrest Gump"],
+"Employes": ["Paul",
+            "Pierre",
+            "Marie"],
+"Exercices": ["les_variables",
+            "les_fichiers",
+            "les_boucles"]}
 # Where the files will be created
 path = Path.cwd()
 # Function that allows you to CREATE folders
 def dirs_creator_here():
     for key, value in DIRS_NAME.items():
-        output_dir_key = path / key
-
         for object in value:
-            output_dir_value = output_dir_key / object
+            output_dir_value = path / key / object
             output_dir_value.mkdir(exist_ok=True, parents=True)
 # Function that allows you to REMOVE folders
 def dirs_delete():
