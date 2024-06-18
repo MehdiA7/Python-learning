@@ -28,29 +28,30 @@ def get_all_urls():
     # return the list
     return links
 
-
+# Extract Title And Lyrics
 def extract_lyrics(url):
     r = requests.get(url)
     if r.status_code != 200:
         print("Page Not Found 404")
         return []
-
+    # Scrap html code and extract lyrics and title
     soup = BeautifulSoup(r.content, 'html.parser')
     lyrics = soup.find("div", class_="Lyrics__Container-sc-1ynbvzw-1 kUgSbL")
     title_song = soup.find("span", class_="SongHeaderdesktop__HiddenMask-sc-1effuo1-11 iMpFIj")
+    # sometimes the API return None i resolve this error with this condition
     if not lyrics:
         return extract_lyrics(url)
-
+    # Group into list
     title = "No title found"
     if title_song:
         title = " ".join([t for t in title_song.stripped_strings])
-
     lyrics_text = "\n".join([sentence for sentence in lyrics.stripped_strings])
-
+    # transform into dictionary
     result = {
         "title": title,
         "lyrics": lyrics_text
     }
+    # Return the dictionnary
     return result
 
     # [print(f"***{title}***\n") for title in title_song.stripped_strings]
