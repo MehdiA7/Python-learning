@@ -9,8 +9,9 @@ def get_all_urls() -> list:
     next_page = ''
     page = 1
     links = []
+    artist_code = "14693"
     while next_page != None:
-        api_link = requests.get(f"https://genius.com/api/artists/14693/songs?page={page}&sort=popularity")
+        api_link = requests.get(f"https://genius.com/api/artists/{artist_code}/songs?page={page}&sort=popularity")
         if api_link.status_code == 200:
             response = api_link.json().get("response")
             next_page = response.get("next_page")
