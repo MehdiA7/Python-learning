@@ -9,14 +9,14 @@ FILE_HASHCODE = {}
 
 def hash_code(file_path):
     """
-Calculate the hash code of a file.
+    Calculate the hash code of a file.
 
-Args:
-    file_path (str): The path to the file for which to calculate the hash code.
+    Args:
+        file_path (str): The path to the file for which to calculate the hash code.
 
-Returns:
-    dict: A dictionary containing the file name as key and its hash code as value.
-"""
+    Returns:
+        dict: A dictionary containing the file name as key and its hash code as value.
+    """
 
     # Create a variable for hash code file
     hash_data = hashlib.sha256()
