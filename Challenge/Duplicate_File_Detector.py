@@ -8,6 +8,16 @@ FILE_HASHCODE = {}
 
 
 def hash_code(file_path):
+    """
+Calculate the hash code of a file.
+
+Args:
+    file_path (str): The path to the file for which to calculate the hash code.
+
+Returns:
+    dict: A dictionary containing the file name as key and its hash code as value.
+"""
+
     # Create a variable for hash code file
     hash_data = hashlib.sha256()
     # Open the file in binary
@@ -22,11 +32,19 @@ def hash_code(file_path):
 
 
 def get_all_file():
+    """
+    Get all files in the specified path.
+
+    Returns:
+        list: A list of Path objects representing files in the specified path.
+    """
     return [f for f in path.glob('*') if f.is_file()]
     # return list(path.rglob('*'))
 
 
 all_path = get_all_file()
+
+
 for way in all_path:
     print(f"File Analysis : {load}")
     load += 1
