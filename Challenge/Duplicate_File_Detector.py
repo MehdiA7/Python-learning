@@ -1,23 +1,27 @@
 import hashlib
 from pathlib import Path
 from pprint import pprint
-
+# Declare variables
 load = 1
 path = Path.home() / "Downloads"
 FILE_HASHCODE = {}
 
 
-def hash_code(path):
+def hash_code(file_path):
+    # Create a variable for hash code file
     hash_data = hashlib.sha256()
-    with open(path, 'rb') as f:
+    # Open the file in binary
+    with open(file_path, 'rb') as f:
+        # Read the file in blocks of 4096 bytes until it returns an empty string
         for octet in iter(lambda: f.read(4096), b""):
+            # Put all in hash_data
             hash_data.update(octet)
-    FILE_HASHCODE[path.name] = hash_data.hexdigest()
+    # Put the result in dictionary with file Name and return
+    FILE_HASHCODE[file_path.name] = hash_data.hexdigest()
     return FILE_HASHCODE
 
 
 def get_all_file():
-    # Touver pourquoi le résultat retourne WindowsPath et pas juste le chemin
     return [f for f in path.glob('*') if f.is_file()]
     # return list(path.rglob('*'))
 
