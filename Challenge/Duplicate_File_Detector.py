@@ -18,7 +18,7 @@ def hash_code(path):
 
 def get_all_file():
     # Touver pourquoi le résultat retourne WindowsPath et pas juste le chemin
-    return [f for f in path.rglob('*') if f.is_file()]
+    return [f for f in path.glob('*') if f.is_file()]
     # return list(path.rglob('*'))
 
 
@@ -34,7 +34,10 @@ for file_name, code in FILE_HASHCODE.items():
     DUPLICATE_FILE.setdefault(code, set()).add(file_name)
 
 result = [key for key, values in DUPLICATE_FILE.items() if len(values) > 1]
-print("Here are the files that are duplicates in your folders : ")
-for duplicate_file in result:
-    print(DUPLICATE_FILE[duplicate_file])
+print("\nHere are the files that are duplicates in your folders :\n")
 
+for name in result:
+    result_list = list(DUPLICATE_FILE[name])
+    for file in result_list:
+        print(file)
+    print(75*'-')
