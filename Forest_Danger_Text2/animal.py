@@ -1,6 +1,16 @@
 from random import randint
 
 
-character = 'ANIMAL'
-pv = randint(20, 50)
-attack = randint(10, 15)
+class Animal:
+    def __init__(self):
+        self.character = 'ANIMAL'
+
+    def pv(self):
+        return randint(20, 50)
+
+    def attack(self):
+        return randint(10, 15)
+
+
+animal = Animal()
+character_value = animal.character
