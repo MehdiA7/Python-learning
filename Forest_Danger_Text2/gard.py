@@ -1,6 +1,6 @@
 from random import randint
 
 
-character = 'gard'
+character = 'GARD'
 pv = 100
 attack = randint(10,30)
