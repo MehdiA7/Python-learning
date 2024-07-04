@@ -7,24 +7,25 @@ from gard import gard
 from animal import animal
 
 
-def move(macro):
-    """
-    Args:
-        macro(str): The macro input to determine the return value
-    Return:
-        int: The value corresponding to the macro input
-    """
-    while True:
+def move_x(macro) -> int:
+    if macro in ['z', 's']:
         match macro:
             case 'z':
-                return 1
+                return +1
+            case 's':
+                return -1
+
+
+def move_y(macro) -> int:
+    if macro in ['q', 'd']:
+        match macro:
             case 'q':
-                return 2
+                return -1
             case 'd':
-                return 3
+                return +1
 
 
-def algo():
+def algo() -> str:
     """
     Generates a random number between 1 and 50 and returns 'animal'
     if the number is less than or equal to 40, otherwise 'gard'.
@@ -36,7 +37,7 @@ def algo():
     return 'animal' if algo_number <= 40 else 'gard'
 
 
-def fight(camper_pv, enemy_name, enemy_pv):
+def fight(camper_pv, enemy_name, enemy_pv) -> int:
     """
     Args
         :param camper_pv:
@@ -107,12 +108,22 @@ def fight(camper_pv, enemy_name, enemy_pv):
             print("THIS IS NOT AN ACTION")
 
 
+x_player_position = 0
+y_player_position = 0
 camperPV = camper.pv
 flask = camper.flask
+
+
 while True:
-    if camperPV >= 0:
-        user_choice = input("Choice a direction 'z' 'q' 'd' : ")
-        if user_choice in ['z', 's', 'q']:
+    if camperPV > 0:
+        user_choice = input("Choice a direction 'z' 'q' 's' 'd' : ")
+        if user_choice in ['z', 'q', 's', 'd']:
+
+            if user_choice in ['z', 's']:
+                x_player_position += move_x(user_choice)
+            elif user_choice in ['q', 'd']:
+                y_player_position += move_y(user_choice)
+
             if algo() == 'animal':
                 print("---OH ITS A ANIMAL---")
                 camperPV = fight(camperPV, animal.character, animal.pv())
