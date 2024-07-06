@@ -18,7 +18,6 @@ class Map:
         print("\n")
 
 
-
 map = Map()
 
 print(map.grid(map.create_grid(map.GRID_SIZE_x, map.GRID_SIZE_y), 3, 1))
