@@ -1,15 +1,15 @@
 import json
 from pathlib import Path
 #Save and verification for save
-if not Path("list_save.json").is_file():
-    with open("list_save.json", 'w', encoding='utf-8') as f:
+if not Path("shop_list_save.json").is_file():
+    with open("shop_list_save.json", 'w', encoding='utf-8') as f:
         course_list = json.dump([], f)
 else:
-    with open("list_save.json", 'r', encoding='utf-8') as f:
+    with open("shop_list_save.json", 'r', encoding='utf-8') as f:
         course_list = json.load(f)
 
 def save():
-    with open("list_save.json", 'w', encoding='utf-8') as f:
+    with open("shop_list_save.json", 'w', encoding='utf-8') as f:
         json.dump(course_list, f)
 
 
@@ -20,31 +20,31 @@ while True:
     print("1. Ajouter\n2. Retirer \n3. Afficher\n4. Vider \n5. Quitter")
 #Selector
     while True:
-        menu=input("Votre choix : ")
+        menu = input("Votre choix : ")
         
         if menu.isdigit():
             break
         else:
             print("SAISIR UN CHIRRE ENTRE 1 ET 5 !")
-        command=""
+        command = ""
 #Add item
     match menu:
         case '1':
-            more=True
+            more = True
             while more:
-                if course_list==None:
-                    course_list=[]
+                if course_list == None:
+                    course_list = []
                 command=input("Que voulez vous ajouté ? : ")
                 course_list.append(command)
                 print(f"Vous avez ajouté {command} a la liste !")
                 more=input("Voulez vous ajouter encore des articles ? y/n : ")
-                if more=='y':
+                if more == 'y':
                     more=True
                 else:
                     more=False
 #Remove
         case '2':
-            if course_list!=None:
+            if course_list != None:
                 see_list="\n".join([f"{index}. {item}" for index, item in enumerate(course_list, start=1)])
                 print(see_list)
                 while True:
@@ -52,7 +52,7 @@ while True:
                         command=input("Que voulez vous retirer ? : ")
                         
                         index_remove=int(command)-1
-                        if 0<= index_remove < len(course_list):
+                        if 0 <= index_remove < len(course_list):
                             course_list.pop(index_remove)
                             print("Supression comfirmé !")
                             break
@@ -65,7 +65,7 @@ while True:
             input("Taper n'importe ou pour continuer : ")
 #View
         case '3':
-                if course_list!=None:
+                if course_list != None:
                     see_list="\n".join([f"{index}. {item}" for index, item in enumerate(course_list, start=1)])
                     print(f"Votre liste\n---------\n{see_list}\n---------\n")
                 else:
@@ -73,7 +73,7 @@ while True:
                 input("Taper n'importe ou pour continuer : ")
 #Clear
         case '4':
-            if course_list!=None:
+            if course_list != None:
                 course_list=course_list.clear()
                 print("Votre liste a été supprimer")
             else:
