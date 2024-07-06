@@ -5,6 +5,7 @@ import time
 from camper import camper
 from gard import gard
 from animal import animal
+from map import map
 
 
 def move_x(macro) -> int:
@@ -33,8 +34,13 @@ def algo() -> str:
     Returns:
         str: Either 'animal' or 'gard'.
     """
-    algo_number = randint(1, 50)
-    return 'animal' if algo_number <= 40 else 'gard'
+    algo_number = 60 #randint(1, 50)
+    if algo_number <= 40:
+        return 'animal'
+    elif algo_number == 45:
+        return 'gard'
+    elif algo_number > 50:
+        return 'no'
 
 
 def fight(camper_pv, enemy_name, enemy_pv) -> int:
@@ -123,6 +129,7 @@ while True:
                 x_player_position += move_x(user_choice)
             elif user_choice in ['q', 'd']:
                 y_player_position += move_y(user_choice)
+            print(map.grid(map.create_grid(map.GRID_SIZE_x, map.GRID_SIZE_y), x_player_position, y_player_position))
 
             if algo() == 'animal':
                 print("---OH ITS A ANIMAL---")
@@ -131,6 +138,9 @@ while True:
             elif algo() == 'gard':
                 print("***DAMN ITS THE GARD***")
                 camperPV = fight(camperPV, gard.character, gard.pv())
+
+            elif algo() == 'no':
+                print("Its Ok")
 
         else:
             print("not ok")
